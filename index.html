@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rafi</title>
+</head>
+<style>
+  body {
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFCC;
+  }
+
+  h1 {
+    font-family: sans-serif;
+    letter-spacing: 0.3rem;
+    font-weight: 300;
+  }
+
+  ::selection{
+    background: #282828;
+    color: #fff;
+  }
+</style>
+<body>
+    <h1>The Site is under construction</h1>
+    <div style="width:20%" id="animation"></div>
+</body>
+<script src="https://labs.nearpod.com/bodymovin/demo/chameleon/lottie_api.minified.js"></script>
+<script src="https://labs.nearpod.com/bodymovin/demo/chameleon/lottie_light.min.js"></script>
+
+<script>
+  lottie.loadAnimation({
+  container: document.getElementById('animation'), // the dom element that will contain the animation
+  renderer: 'svg',
+  loop: false,
+  autoplay: true,
+  path: 'data.json' // the path to the animation json
+  });
+  console.log('Seriously there is nothing here...')
+</script>
+</html>
