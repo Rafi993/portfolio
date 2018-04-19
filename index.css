@@ -1,0 +1,156 @@
+body {
+  color: #fff;
+  font-family: sans-serif;
+}
+
+img {
+  height: 65vh;
+  margin:0 auto;
+  display:block;
+  margin-top: 10vh;
+}
+
+.contact, .form-group{
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.form-group input{
+  border: none;
+  width: 400px;
+  padding: 10px 20px;
+  outline: none;
+  border-bottom: 1px solid #282828;
+  font-size: 20px;
+}
+
+.fa-twitter, .fa-medium, .fa-github, .fa-stack-overflow, .fa-envelope {
+  font-size: 40px;
+  margin: 0px 10px;
+}
+
+.fa-twitter:hover, .fa-github:hover, .fa-medium:hover, .fa-stack-overflow:hover, .fa-envelope:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+.fa-magic {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.contact a { 
+  margin: 0px 10px;
+  text-decoration: none;
+  outline: none;
+}
+
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.fa-magic:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  border-radius: .4em;
+  width: 66px;
+  margin: 0 auto;
+  top: 124px;
+  height: 3px;
+  left: 140px;
+  text-align: center;
+  color: #222222;
+  padding: 20px 42px;
+  padding-bottom: 32px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top-color: #fff;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -10px;
+	margin-bottom: -20px;
+}
+
+.color-0 ,
+.color-0 .fa,
+.color-0 .form-group input,
+.color-0 input::placeholder{
+  background: #F03434;
+  color: #000;
+}
+
+.color-1,
+.color-1 .fa,
+.color-1 .form-group input,
+.color-1 input::placeholder {
+  background: #4B77BE;
+  color: #fff;
+}
+
+.color-2,
+.color-2 .fa,
+.color-2 .form-group input,
+.color-2 input::placeholder {
+  background: #282828;
+  color: #fff;
+}
+
+.color-2 .form-group input{
+  border-bottom: 1px solid #fff;
+}
+
+.color-3,
+.color-3 .fa,
+.color-3 .form-group input,
+.color-3 input::placeholder {
+  background: #013243;
+  color: #fff;
+}
+
+.color-3 .form-group input{
+  border-bottom: 1px solid #fff;
+}
+
+.color-4 input::placeholder,
+.color-4,
+.color-4 .fa,
+.color-4 .form-group input{
+  background: #6AC9CD;
+  color: #000;
+}

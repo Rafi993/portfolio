@@ -4,46 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
     <title>Rafi</title>
 </head>
-<style>
-  body {
-    height: 100vh;
-    padding: 0px;
-    margin: 0px;
-    display: flex;
-    text-transform: uppercase;
-    justify-content: center;
-    align-items: center;
-    background: #FFFFCC;
-  }
+<body class="color-4">
 
-  h1 {
-    font-family: sans-serif;
-    letter-spacing: 0.3rem;
-    font-weight: 300;
-  }
+    <i class="fa fa-magic" onclick="changeColor()"></i>
 
-  ::selection{
-    background: #282828;
-    color: #fff;
-  }
-</style>
-<body>
-    <h1>The Site is under construction</h1>
-    <div style="width:20%" id="animation"></div>
+    <div class="speech-bubble">Hi there</div>
+    <img src="./me.png" alt="me"/>
+
+    <div class="form-group">
+        <input type="text" name="talk" id="talk" placeholder="Talk to me human">
+    </div>
+    
+    <div class="contact">
+            
+        <a href="https://github.com/Rafi993" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="https://stackoverflow.com/users/2445295/user93" target="_blank"><i class="fa fa-stack-overflow"></i></a>
+        <a href="https://twitter.com/approxhuman" target="_blank"><i class="fa fa-twitter"></i></a>
+
+        <a href="https://github.com/Rafi993" target="_blank"><i class="fa fa-envelope"></i></a>
+        <a href="https://medium.com/@notsohuman" target="_blank"><i class="fa fa-medium"></i></a>
+    </div>
+
+    <script src="index.js"></script>
 </body>
-<script src="https://labs.nearpod.com/bodymovin/demo/chameleon/lottie_api.minified.js"></script>
-<script src="https://labs.nearpod.com/bodymovin/demo/chameleon/lottie_light.min.js"></script>
-
-<script>
-  lottie.loadAnimation({
-  container: document.getElementById('animation'), // the dom element that will contain the animation
-  renderer: 'svg',
-  loop: false,
-  autoplay: true,
-  path: 'data.json' // the path to the animation json
-  });
-  console.log('Seriously there is nothing here...')
-</script>
 </html>
