@@ -1,6 +1,9 @@
 body {
   color: #fff;
   font-family: sans-serif;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
 img {
@@ -15,6 +18,7 @@ img {
   justify-content: center;
 }
 
+
 .form-group {
   margin-bottom: 40px;
 }
@@ -26,6 +30,15 @@ img {
   outline: none;
   border-bottom: 1px solid #282828;
   font-size: 20px;
+}
+
+@media screen and (max-width:500px){
+  .form-group {
+    width: 100%;
+  }
+  .form-group input{
+    width: 100%;
+  }
 }
 
 .fa-twitter, .fa-medium, .fa-github, .fa-stack-overflow, .fa-envelope {
@@ -83,7 +96,7 @@ img {
   max-width: 250px;
   min-height: 1.5em;
   left: 52%;
-  top: 51px;
+  top: 4vh;
   padding: 20px;
   background: #FFFFFF;
   color: #282828;
