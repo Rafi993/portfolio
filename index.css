@@ -78,33 +78,17 @@ img {
 }
 
 .speech-bubble {
-  position: relative;
-  background: #fff;
-  border-radius: .4em;
-  width: 66px;
-  margin: 0 auto;
-  top: 124px;
-  height: 3px;
-  left: 140px;
-  text-align: center;
-  color: #222222;
-  padding: 20px 42px;
-  padding-bottom: 32px;
-}
-
-.speech-bubble:after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 20px solid transparent;
-	border-top-color: #fff;
-	border-bottom: 0;
-	border-left: 0;
-	margin-left: -10px;
-	margin-bottom: -20px;
+  position: absolute;
+  display: inline-block;
+  max-width: 250px;
+  min-height: 1.5em;
+  left: 52%;
+  top: 51px;
+  padding: 20px;
+  background: #FFFFFF;
+  color: #282828;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .color-0 ,
@@ -153,4 +137,8 @@ img {
 .color-4 .form-group input{
   background: #6AC9CD;
   color: #000;
+}
+
+b {
+ font-weight: 600;
 }
