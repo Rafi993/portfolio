@@ -18,24 +18,23 @@ let pressCounter = 0;
  * This functions change the color of elements on page by adding class to body
  */
 const changeColor = ()=>{
-  reply('', 'Still not ready')
-  // let newBackground = 0;
-  // pressCounter ++;
-  // if(currentColor<4) {
-  //   currentColor++;
-  //   newBackground =`color-${currentColor}`;
-  // } else {
-  //   currentColor=0;
-  //   newBackground =`color-${currentColor}`;
-  // }
+  let newBackground = 0;
+  pressCounter ++;
+  if(currentColor<4) {
+    currentColor++;
+    newBackground =`color-${currentColor}`;
+  } else {
+    currentColor=0;
+    newBackground =`color-${currentColor}`;
+  }
 
-  // if(pressCounter > 10){
-  //   reply('', 'Settle on a color will you!!!')
-  // }
+  if(pressCounter > 10){
+    reply('', 'Settle on a color will you!!!')
+  }
   
-  // const body = document.getElementsByTagName('body')[0];
-  // // Replace class
-  // body.className = body.className.replace(/\bcolor-[0-9]\b/g , '' ) + newBackground;
+  const body = document.getElementsByTagName('body')[0];
+  // Replace class
+  body.className = body.className.replace(/\bcolor-[0-9]\b/g , '' ) + newBackground;
 }
 
 const defaultConversation = [
