@@ -1,4 +1,3 @@
-
 /**
  * Reply to user
  */
@@ -44,9 +43,8 @@ const defaultConversation = [
   'Who works mostly in <b>JavaScript</b> and <b>Python</b>',
   'In my free time I contribute to <b>Open source</b> and talk tech',
   'Actually I just realized I\'m just a bot',
-  'I was built using <b>Tensorflow.js</b>',
-  'I am still under construction',
-  // 'Ask me whatever you want human'
+  'Ask me whatever you want human',
+  'I"m not responsible if you get offened by anything I say'
 ]
 
 const standardResponse = {
@@ -65,6 +63,13 @@ const talk = i=>{
   }
 }
 
+let model = {};
+tf.loadModel('./chat/model.json')
+.then(data=>{
+  console.log(data)
+  model = data
+})
+
 talk(0);
 
 
@@ -75,6 +80,10 @@ document.getElementById("talk")
     if (event.keyCode === 13) {
       if(standardResponse[event.target.value] !== undefined) {
         standardResponse[event.target.value]();
+      } else {
+        const prediction = model.predict(event.target.value);
+        reply('', prediction)
+        console.log(prediction)
       }
     }
 });

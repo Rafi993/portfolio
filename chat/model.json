@@ -1,0 +1,398 @@
+{
+  "modelTopology": {
+    "backend": "tensorflow",
+    "training_config": {
+      "loss_weights": null,
+      "loss": "categorical_crossentropy",
+      "metrics": ["accuracy"],
+      "optimizer_config": {
+        "config": {
+          "rho": 0.8999999761581421,
+          "epsilon": 1e-08,
+          "lr": 0.0010000000474974513,
+          "decay": 0.0
+        },
+        "class_name": "RMSprop"
+      },
+      "sample_weight_mode": null
+    },
+    "keras_version": "2.0.3",
+    "model_config": {
+      "config": {
+        "output_layers": [
+          ["activation_6", 0, 0]
+        ],
+        "input_layers": [
+          ["input_5", 0, 0],
+          ["input_6", 0, 0]
+        ],
+        "layers": [{
+          "config": {
+            "sparse": false,
+            "batch_input_shape": [null, 156],
+            "dtype": "float32",
+            "name": "input_5"
+          },
+          "inbound_nodes": [],
+          "class_name": "InputLayer",
+          "name": "input_5"
+        }, {
+          "config": {
+            "sparse": false,
+            "batch_input_shape": [null, 6],
+            "dtype": "float32",
+            "name": "input_6"
+          },
+          "inbound_nodes": [],
+          "class_name": "InputLayer",
+          "name": "input_6"
+        }, {
+          "config": [{
+            "config": {
+              "activity_regularizer": null,
+              "input_dim": 38,
+              "mask_zero": false,
+              "input_length": null,
+              "embeddings_constraint": null,
+              "embeddings_regularizer": null,
+              "output_dim": 64,
+              "batch_input_shape": [null, null],
+              "dtype": "int32",
+              "name": "embedding_7",
+              "trainable": true,
+              "embeddings_initializer": {
+                "config": {
+                  "minval": -0.05,
+                  "maxval": 0.05,
+                  "seed": null
+                },
+                "class_name": "RandomUniform"
+              }
+            },
+            "class_name": "Embedding"
+          }, {
+            "config": {
+              "name": "dropout_9",
+              "trainable": true,
+              "rate": 0.3
+            },
+            "class_name": "Dropout"
+          }],
+          "inbound_nodes": [
+            [
+              ["input_5", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Sequential",
+          "name": "sequential_7"
+        }, {
+          "config": [{
+            "config": {
+              "activity_regularizer": null,
+              "input_dim": 38,
+              "mask_zero": false,
+              "input_length": 6,
+              "embeddings_constraint": null,
+              "embeddings_regularizer": null,
+              "output_dim": 64,
+              "batch_input_shape": [null, 6],
+              "dtype": "int32",
+              "name": "embedding_9",
+              "trainable": true,
+              "embeddings_initializer": {
+                "config": {
+                  "minval": -0.05,
+                  "maxval": 0.05,
+                  "seed": null
+                },
+                "class_name": "RandomUniform"
+              }
+            },
+            "class_name": "Embedding"
+          }, {
+            "config": {
+              "name": "dropout_11",
+              "trainable": true,
+              "rate": 0.3
+            },
+            "class_name": "Dropout"
+          }],
+          "inbound_nodes": [
+            [
+              ["input_6", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Sequential",
+          "name": "sequential_9"
+        }, {
+          "config": {
+            "name": "dot_3",
+            "trainable": true,
+            "normalize": false,
+            "axes": [2, 2]
+          },
+          "inbound_nodes": [
+            [
+              ["sequential_7", 1, 0, {}],
+              ["sequential_9", 1, 0, {}]
+            ]
+          ],
+          "class_name": "Dot",
+          "name": "dot_3"
+        }, {
+          "config": {
+            "activation": "softmax",
+            "name": "activation_5",
+            "trainable": true
+          },
+          "inbound_nodes": [
+            [
+              ["dot_3", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Activation",
+          "name": "activation_5"
+        }, {
+          "config": [{
+            "config": {
+              "activity_regularizer": null,
+              "input_dim": 38,
+              "mask_zero": false,
+              "input_length": null,
+              "embeddings_constraint": null,
+              "embeddings_regularizer": null,
+              "output_dim": 6,
+              "batch_input_shape": [null, null],
+              "dtype": "int32",
+              "name": "embedding_8",
+              "trainable": true,
+              "embeddings_initializer": {
+                "config": {
+                  "minval": -0.05,
+                  "maxval": 0.05,
+                  "seed": null
+                },
+                "class_name": "RandomUniform"
+              }
+            },
+            "class_name": "Embedding"
+          }, {
+            "config": {
+              "name": "dropout_10",
+              "trainable": true,
+              "rate": 0.3
+            },
+            "class_name": "Dropout"
+          }],
+          "inbound_nodes": [
+            [
+              ["input_5", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Sequential",
+          "name": "sequential_8"
+        }, {
+          "config": {
+            "name": "add_3",
+            "trainable": true
+          },
+          "inbound_nodes": [
+            [
+              ["activation_5", 0, 0, {}],
+              ["sequential_8", 1, 0, {}]
+            ]
+          ],
+          "class_name": "Add",
+          "name": "add_3"
+        }, {
+          "config": {
+            "name": "permute_3",
+            "trainable": true,
+            "dims": [2, 1]
+          },
+          "inbound_nodes": [
+            [
+              ["add_3", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Permute",
+          "name": "permute_3"
+        }, {
+          "config": {
+            "axis": -1,
+            "trainable": true,
+            "name": "concatenate_3"
+          },
+          "inbound_nodes": [
+            [
+              ["permute_3", 0, 0, {}],
+              ["sequential_9", 1, 0, {}]
+            ]
+          ],
+          "class_name": "Concatenate",
+          "name": "concatenate_3"
+        }, {
+          "config": {
+            "activation": "tanh",
+            "recurrent_initializer": {
+              "config": {
+                "gain": 1.0,
+                "seed": null
+              },
+              "class_name": "Orthogonal"
+            },
+            "recurrent_dropout": 0.0,
+            "dropout": 0.0,
+            "kernel_initializer": {
+              "config": {
+                "distribution": "uniform",
+                "scale": 1.0,
+                "seed": null,
+                "mode": "fan_avg"
+              },
+              "class_name": "VarianceScaling"
+            },
+            "bias_initializer": {
+              "config": {},
+              "class_name": "Zeros"
+            },
+            "implementation": 0,
+            "activity_regularizer": null,
+            "trainable": true,
+            "bias_constraint": null,
+            "stateful": false,
+            "recurrent_constraint": null,
+            "recurrent_activation": "hard_sigmoid",
+            "unroll": false,
+            "recurrent_regularizer": null,
+            "go_backwards": false,
+            "kernel_constraint": null,
+            "name": "lstm_3",
+            "bias_regularizer": null,
+            "return_sequences": false,
+            "units": 32,
+            "unit_forget_bias": true,
+            "use_bias": true,
+            "kernel_regularizer": null
+          },
+          "inbound_nodes": [
+            [
+              ["concatenate_3", 0, 0, {}]
+            ]
+          ],
+          "class_name": "LSTM",
+          "name": "lstm_3"
+        }, {
+          "config": {
+            "name": "dropout_12",
+            "trainable": true,
+            "rate": 0.3
+          },
+          "inbound_nodes": [
+            [
+              ["lstm_3", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Dropout",
+          "name": "dropout_12"
+        }, {
+          "config": {
+            "activation": "linear",
+            "kernel_constraint": null,
+            "name": "dense_3",
+            "kernel_regularizer": null,
+            "activity_regularizer": null,
+            "bias_regularizer": null,
+            "units": 38,
+            "bias_initializer": {
+              "config": {},
+              "class_name": "Zeros"
+            },
+            "kernel_initializer": {
+              "config": {
+                "distribution": "uniform",
+                "scale": 1.0,
+                "seed": null,
+                "mode": "fan_avg"
+              },
+              "class_name": "VarianceScaling"
+            },
+            "trainable": true,
+            "bias_constraint": null,
+            "use_bias": true
+          },
+          "inbound_nodes": [
+            [
+              ["dropout_12", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Dense",
+          "name": "dense_3"
+        }, {
+          "config": {
+            "activation": "softmax",
+            "name": "activation_6",
+            "trainable": true
+          },
+          "inbound_nodes": [
+            [
+              ["dense_3", 0, 0, {}]
+            ]
+          ],
+          "class_name": "Activation",
+          "name": "activation_6"
+        }],
+        "name": "model_3"
+      },
+      "class_name": "Model"
+    }
+  },
+  "weightsManifest": [{
+    "weights": [{
+      "name": "dense_3/kernel",
+      "shape": [32, 38],
+      "dtype": "float32"
+    }, {
+      "name": "dense_3/bias",
+      "shape": [38],
+      "dtype": "float32"
+    }],
+    "paths": ["group1-shard1of1"]
+  }, {
+    "weights": [{
+      "name": "lstm_3/kernel",
+      "shape": [220, 128],
+      "dtype": "float32"
+    }, {
+      "name": "lstm_3/recurrent_kernel",
+      "shape": [32, 128],
+      "dtype": "float32"
+    }, {
+      "name": "lstm_3/bias",
+      "shape": [128],
+      "dtype": "float32"
+    }],
+    "paths": ["group2-shard1of1"]
+  }, {
+    "weights": [{
+      "name": "embedding_7/embeddings",
+      "shape": [38, 64],
+      "dtype": "float32"
+    }],
+    "paths": ["group3-shard1of1"]
+  }, {
+    "weights": [{
+      "name": "embedding_8/embeddings",
+      "shape": [38, 6],
+      "dtype": "float32"
+    }],
+    "paths": ["group4-shard1of1"]
+  }, {
+    "weights": [{
+      "name": "embedding_9/embeddings",
+      "shape": [38, 64],
+      "dtype": "float32"
+    }],
+    "paths": ["group5-shard1of1"]
+  }]
+}
