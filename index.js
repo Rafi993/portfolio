@@ -43,8 +43,7 @@ const defaultConversation = [
   'Who works mostly in <b>JavaScript</b> and <b>Python</b>',
   'In my free time I contribute to <b>Open source</b> and talk tech',
   'Actually I just realized I\'m just a bot',
-  'Ask me whatever you want human',
-  'I"m not responsible if you get offened by anything I say'
+  'Ask me whatever you want human'
 ]
 
 const standardResponse = {
