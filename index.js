@@ -67,11 +67,17 @@ document.getElementById("talk")
       })
       .then(data=>{
         console.log(data)
-        reply('', data.data.intent[0].value)
+        
+        if(data.data.intent[0].value.indexOf('link:') {
+          window.open(data.data.intent[0].value.replace('link:',''), '_blank') 
+        } else {
+          reply('', data.data.intent[0].value)
+        }
+       
        })
        .catch((error)=> {
          if(error) {
-          reply('', 'Check your network')
+          reply('', 'Ask me something I understand')
          }
       });
     }
