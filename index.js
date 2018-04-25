@@ -51,7 +51,7 @@ const talk = i=>{
     setTimeout(()=> {
       reply('', defaultConversation[i])
       talk(i+1)
-    }, 00)
+    }, 2000)
   }
 }
 
