@@ -47,44 +47,34 @@ const defaultConversation = [
   'I"m not responsible if you get offened by anything I say'
 ]
 
-const standardResponse = {
-  'open github': ()=> { window.open('https://github.com/Rafi993', '_blank').focus() },
-  'open stackoverflow': ()=> { window.open('https://stackoverflow.com/users/2445295/user93', '_blank').focus() }, 
-  'open blog': ()=> {window.open('https://medium.com/@notsohuman','_blank').focus()},
-  'mail me': ()=> {window.open('https://medium.com/@notsohuman','_blank').focus()}
-}
-
 const talk = i=>{
   if(defaultConversation[i]!== undefined) {
     setTimeout(()=> {
       reply('', defaultConversation[i])
       talk(i+1)
-    }, 2000)
+    }, 00)
   }
 }
 
-let model = {};
-tf.loadModel('./chat/model.json')
-.then(data=>{
-  console.log(data)
-  model = data
-})
-
 talk(0);
 
-
-//  TODO: Remove hard-coded response and add bot api
 document.getElementById("talk")
-    .addEventListener("keyup", function(event) {
+    .addEventListener("keyup", (event)=> {
     event.preventDefault();
     if (event.keyCode === 13) {
-      if(standardResponse[event.target.value] !== undefined) {
-        standardResponse[event.target.value]();
-      } else {
-        const prediction = model.predict(event.target.value);
-        reply('', prediction)
-        console.log(prediction)
-      }
+
+      axios.post('http://18.218.88.125:3000/msg', {
+        'question': event.target.value
+      })
+      .then(data=>{
+        console.log(data)
+        reply('', data.data.intent[0].value)
+       })
+       .catch((error)=> {
+         if(error) {
+          reply('', 'Check your network')
+         }
+      });
     }
 });
 
