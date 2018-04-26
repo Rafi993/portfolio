@@ -78,17 +78,23 @@ document.getElementById("talk")
     if (event.keyCode === 13) {
       onEnter = true;
       axios.post('http://18.218.88.125:3000/msg', {
-          'question': event.target.value
-        })
-        .then(data => {
-          console.log(data)
+        'question': event.target.value
+      })
+      .then(data=>{
+        console.log(data)
+        
+        if(data.data.intent[0].value.indexOf('link:') !== -1) {
+          window.open(data.data.intent[0].value.replace('link:',''), '_blank') 
+        } else {
           reply('', data.data.intent[0].value)
-        })
-        .catch((error) => {
-          if (error) {
-            reply('', 'Check your network')
-          }
-        });
+        }
+       
+       })
+       .catch((error)=> {
+         if(error) {
+          reply('', 'Ask me something I understand')
+         }
+      });
     }
   });
 
