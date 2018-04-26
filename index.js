@@ -82,7 +82,7 @@ document.getElementById("talk")
       })
       .then(data=>{
         console.log(data)
-        
+        event.target.value = '';
         if(data.data.intent[0].value.indexOf('link:') !== -1) {
           window.open(data.data.intent[0].value.replace('link:',''), '_blank') 
         } else {
