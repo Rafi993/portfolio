@@ -52,6 +52,7 @@ const defaultConversation = [
   'I\'m Developer',
   'Who works mostly in <b>JavaScript</b> and <b>Python</b>',
   'In my free time I contribute to <b>Open source</b> and talk tech',
+  'Make sure pop up is not blocked in your browser',
   'Actually I just realized I\'m just a bot',
   'Ask me whatever you want human'
 ]
