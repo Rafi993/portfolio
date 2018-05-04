@@ -33,9 +33,10 @@ img {
   font-size: 20px;
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:580px){
   .form-group {
-    width: 100%;
+    width: 80%;
+    margin: auto;
   }
   .form-group input{
     width: 100%;
@@ -166,4 +167,11 @@ img {
 
 b {
  font-weight: 600;
+}
+
+
+@media screen and (max-width: 580px) {
+  .hidden-xs {
+    display: none;
+  }
 }
