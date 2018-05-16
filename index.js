@@ -57,6 +57,8 @@ const defaultConversation = [
   'Ask me whatever you want human'
 ]
 
+const defaultSuggestion = ['what do you do ?','resume', 'random gif']
+
 const talk = i => {
   if (defaultConversation[i] !== undefined) {
     setTimeout(() => {
@@ -70,10 +72,14 @@ const talk = i => {
 
 talk(0);
 
-
+/**
+ * Create suggestion bubble
+ * @param {Array} suggestions Array of suggestions
+ */
 const renderSuggestions = suggestions=>{
   if(suggestions.length !== 0) {
     const suggestionContainer= document.getElementById('suggestionContainer')
+    suggestionContainer.innerHTML = "";
     suggestions.forEach(text=> {
       const question = document.createElement('span')
       question.textContent = text
@@ -84,34 +90,35 @@ const renderSuggestions = suggestions=>{
   }
 }
 
-
-renderSuggestions(['what do you do ?','resume', 'random gif'])
+renderSuggestions(defaultSuggestion)
 
 /***
  * Add Event listener to text box
  */
 document.getElementById("talk")
- .addEventListener("keyup", (event) => {
+ .addEventListener('keyup', (event) => {
     event.preventDefault();
-    console.log(event)
     if (event.keyCode === 13) {
       onEnter = true;
       axios.post('http://18.218.88.125:3000/msg', {
         'question': event.target.value
       })
       .then(data=>{
-        console.log(data)
         event.target.value = '';
-        if(data.data.intent[0].value.indexOf('link:') !== -1) {
-          window.open(data.data.intent[0].value.replace('link:',''), '_blank') 
+        if(data.data.entities.intent[0].value.indexOf('link:') !== -1) {
+          window.open(data.data.entities.intent[0].value.replace('link:',''), '_blank') 
         } else {
-          reply('', data.data.intent[0].value)
+          console.log('data', data.data.entities.intent[0].value)
+          renderSuggestions(data.data.suggestion)
+          console.log('sug',data)
+          reply('', data.data.entities.intent[0].value)
         }
        
        })
        .catch((error)=> {
          if(error) {
           reply('', 'Ask me something I understand')
+          reply(defaultSuggestion)
          }
       });
     }
@@ -123,19 +130,26 @@ document.getElementById("talk")
    * @param {String} suggestion Suggested question
    */
   const useSuggestion = suggestion => {
+    const input = document.getElementById('talk')
+    input.value = suggestion;
+    onEnter = true;
     axios.post('http://18.218.88.125:3000/msg', {
       'question': suggestion
     })
     .then(data=>{
-      if(data.data.intent[0].value.indexOf('link:') !== -1) {
-        window.open(data.data.intent[0].value.replace('link:',''), '_blank') 
+      input.value = ''
+      renderSuggestions(data.data.suggestion)
+      if(data.data.entities.intent[0].value.indexOf('link:') !== -1) {
+        window.open(data.data.entities.intent[0].value.replace('link:',''), '_blank') 
       } else {
-        reply('', data.data.intent[0].value)
+        reply('', data.data.entities.intent[0].value)
       }
      })
      .catch((error)=> {
+       renderSuggestions(defaultSuggestion)
        if(error) {
         reply('', 'Ask me something I understand')
+        input.value = ''
        }
     });
   }
