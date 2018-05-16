@@ -70,12 +70,30 @@ const talk = i => {
 
 talk(0);
 
+
+const renderSuggestions = suggestions=>{
+  if(suggestions.length !== 0) {
+    const suggestionContainer= document.getElementById('suggestionContainer')
+    suggestions.forEach(text=> {
+      const question = document.createElement('span')
+      question.textContent = text
+      question.classList = 'speech-bubble'
+      question.onclick = ()=>useSuggestion(text)
+      suggestionContainer.appendChild(question)
+    })
+  }
+}
+
+
+renderSuggestions(['what do you do ?','resume', 'random gif'])
+
 /***
  * Add Event listener to text box
  */
 document.getElementById("talk")
  .addEventListener("keyup", (event) => {
     event.preventDefault();
+    console.log(event)
     if (event.keyCode === 13) {
       onEnter = true;
       axios.post('http://18.218.88.125:3000/msg', {
@@ -99,5 +117,27 @@ document.getElementById("talk")
     }
   });
 
+
+  /**
+   * Trigger when user clicks the suggested question
+   * @param {String} suggestion Suggested question
+   */
+  const useSuggestion = suggestion => {
+    axios.post('http://18.218.88.125:3000/msg', {
+      'question': suggestion
+    })
+    .then(data=>{
+      if(data.data.intent[0].value.indexOf('link:') !== -1) {
+        window.open(data.data.intent[0].value.replace('link:',''), '_blank') 
+      } else {
+        reply('', data.data.intent[0].value)
+      }
+     })
+     .catch((error)=> {
+       if(error) {
+        reply('', 'Ask me something I understand')
+       }
+    });
+  }
 
 console.log('There is nothing here the code for this repo is at https://github.com/Rafi993/portfolio')

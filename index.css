@@ -14,9 +14,17 @@ img {
   min-height: 400px;
 }
 
-.form-group{
+.form-group, .suggestionContainer{
   display: flex;
   justify-content: center;
+}
+
+.suggestionContainer span {
+  margin: 0px 10px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 0px;
+  background: goldenrod;
 }
 
 .contact {
