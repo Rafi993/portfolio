@@ -79,7 +79,7 @@ talk(0);
 const renderSuggestions = suggestions=>{
   if(suggestions.length !== 0) {
     const suggestionContainer= document.getElementById('suggestionContainer')
-    suggestionContainer.innerHTML = "";
+    suggestionContainer.innerHTML = '';
     suggestions.forEach(text=> {
       const question = document.createElement('span')
       question.textContent = text
