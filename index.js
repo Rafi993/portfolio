@@ -95,7 +95,7 @@ renderSuggestions(defaultSuggestion)
 /***
  * Add Event listener to text box
  */
-document.getElementById("talk")
+document.getElementById('talk')
  .addEventListener('keyup', (event) => {
     event.preventDefault();
     if (event.keyCode === 13) {
