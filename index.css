@@ -14,9 +14,15 @@ img {
   min-height: 400px;
 }
 
-.contact, .form-group{
+.form-group{
   display: flex;
   justify-content: center;
+}
+
+.contact {
+  position: absolute;
+  top: 20%;
+  right: 0px;
 }
 
 
@@ -62,7 +68,8 @@ img {
 }
 
 .contact a { 
-  margin: 0px 10px;
+  display: block;
+  margin: 20px;
   text-decoration: none;
   outline: none;
 }
